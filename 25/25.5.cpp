@@ -10,7 +10,7 @@ int main()
     char szFullFileName[MAX_PATH];
 
     // находим первый файл
-    hFindFile = FindFirstFile("dir/*", &fd);
+    hFindFile = FindFirstFile("dir\\*", &fd);
     if (hFindFile == INVALID_HANDLE_VALUE)
     {
         cerr << "Find first file failed." << endl
@@ -51,7 +51,7 @@ int main()
     if (!FindClose(hFindFile))
     {
         cout << "Find close failed." << endl;
-        return ();
+        return 0;
     }
     // удалаем каталог
     if (!RemoveDirectory("dir"))
@@ -67,8 +67,6 @@ int main()
 
     cout << "The directory is removed." << endl;
 
-    // закрываем дескриптор поиска
-    FindClose(hFindFile);
     cin.get();
     return 0;
 }
